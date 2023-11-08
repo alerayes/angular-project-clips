@@ -9,16 +9,24 @@
         Field is required
     </p>
     <p *ngIf="control.errors?.minlength"
-       class="text-red-400">
-        The value you inputted is 
-        {{ control.errors?.minlength.actualLenght}}
-        characters long.
-        It must be at least
-        {{ control.errors?.minlength.requiredLenght}}
-        characters long.
+    class="text-red-400">
+    The value you inputted is 
+    {{ control.errors?.minlength.actualLength }}
+    characters long.
+    It must be at least 
+    {{ control.errors?.minlength.requiredLength }}
+    characters long.
     </p>
-    <p *ngIf="control.errors?.email"
+    <p *ngIf="control.errors?.email" 
        class="text-red-400">
         You must enter a valid email.
-    </p>   
+    </p>
+    <p *ngIf="control.errors?.min"
+       class="text-red-400">
+        Value too low.
+    </p>
+    <p *ngIf="control.errors?.max"
+       class="text-red-400">
+       Value too high.
+    </p>    
 </ng-container>       
