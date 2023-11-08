@@ -9,11 +9,11 @@
                           duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
                placeholder="Enter Name" 
                minlength="3"/>
-        <p *ngIf="registerForm.controls.name.errors?.required"
+        <p *ngIf="registerForm.controls.name.touched && registerForm.controls.name.dirty && registerForm.controls.name.errors?.required"
             class="text-red-400">
             Field is required
         </p>
-        <p *ngId="registerForm.controls.name.errors?.minlength"
+        <p *ngId="registerForm.controls.name.touched && registerForm.controls.name.dirty && registerForm.controls.name.errors?.minlength"
             class="text-red-400">
             The value you inputted is 
             {{ registerForm.controls.name.errors?.minlength.actualLenght}}
