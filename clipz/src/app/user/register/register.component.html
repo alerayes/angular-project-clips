@@ -7,7 +7,21 @@
                type="text"
                class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
                           duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-               placeholder="Enter Name" />
+               placeholder="Enter Name" 
+               minlength="3"/>
+        <p *ngIf="registerForm.controls.name.errors?.required"
+            class="text-red-400">
+            Field is required
+        </p>
+        <p *ngId="registerForm.controls.name.errors?.minlength"
+            class="text-red-400">
+            The value you inputted is 
+            {{ registerForm.controls.name.errors?.minlength.actualLenght}}
+            characters long.
+            It must be at least
+            {{ registerForm.controls.name.errors?.minlength.requiredLenght}}
+            characters long.
+        </p>       
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -16,7 +30,7 @@
                class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
                           duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
                placeholder="Enter Email"
-               minlength="3" />
+                />
     </div>
     <!-- Age -->
     <div class="mb-3">
