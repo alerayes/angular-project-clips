@@ -20,12 +20,12 @@ export class RegisterComponent {
     Validators.min(18),
     Validators.max(120)
   ])
-  password = new FormControl('', [
+  password = new  FormControl('', [
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
   ])
   confirm_password = new FormControl('', [
-    Validators.required,
+    Validators.required
   ])
   phoneNumber = new FormControl('', [
     Validators.required,
@@ -39,7 +39,7 @@ export class RegisterComponent {
     age: this.age,
     password: this.password,
     confirm_password: this.confirm_password,
-    phoneNumber: this.confirm_password
+    phoneNumber: this.phoneNumber
   })
 
 }
