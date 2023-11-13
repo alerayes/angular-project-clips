@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   public async createUser(userData: IUser) {
-    if(userData.password) {
+    if(!userData.password) {
       throw new Error('Password not provided!')
     }
 
@@ -25,12 +25,20 @@ export class AuthService {
       userData.email as string, userData.password as string
     )
     
-    await this.usersCollection.add({
+    if(!userCred.user){
+      throw new Error('User cannot be found')
+    }
+
+    await this.usersCollection.doc(userCred.user.uid).set({
       name: userData.name,
       email: userData.email,
       age: userData.age,
       phoneNumber: userData.phoneNumber
-
     })
+
+    await userCred.user.updateProfile({
+      displayName: userData.name
+    })
+
   }
 }
