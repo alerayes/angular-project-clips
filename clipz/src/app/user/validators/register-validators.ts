@@ -22,7 +22,6 @@ export class RegisterValidators {
   }
 }
 
-
 // new RegisterValidators.match() <~ Without static
 // RegisterValidators.match() <~ With static (We can directly call the method without
 // creating a new instance.)
