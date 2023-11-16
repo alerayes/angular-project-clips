@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import IUser from 'src/app/models/user.model';
 import { RegisterValidators } from '../validators/register-validators';
 import { EmailTaken } from '../validators/email-taken';
-
-
+import IUser from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +43,6 @@ export class RegisterComponent {
     Validators.minLength(13),
     Validators.maxLength(13)
   ])
-
   showAlert = false
   alertMsg = 'Please wait! Your account is being created.'
   alertColor = 'blue'
@@ -67,20 +64,16 @@ export class RegisterComponent {
 
     try {
       await this.auth.createUser(this.registerForm.value as IUser)
-    } catch (e) {
+    } catch(e) {
       console.error(e)
 
       this.alertMsg = 'An unexpected error occurred. Please try again later'
       this.alertColor = 'red'
       this.inSubmission = false
-
       return
     }
 
     this.alertMsg = 'Success! Your account has been created.'
     this.alertColor = 'green'
-
   }
 }
-
-
